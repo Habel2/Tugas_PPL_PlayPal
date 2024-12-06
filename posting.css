@@ -1,0 +1,39 @@
+.navigasi{
+    width:100%;
+}
+.navbar{
+    width:100%;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+a{
+  color:white;
+}
+.sisi{
+  display:flex;
+  margin-top:10%;
+  margin-bottom:10%;
+}
+#form-foto{
+  padding:180px 20px 180px;
+}
+.kiri{
+  padding:20px;
+  float:left;
+  display:flex;
+}
+.kanan{
+  padding:20px;
+  width:100%;
+  float:right;
+}
+footer{
+    background:black;
+    text-align: center;
+}
+td{
+  padding-right:20px;
+}
+label{
+    color: white;
+}

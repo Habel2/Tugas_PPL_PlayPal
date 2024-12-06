@@ -1,0 +1,45 @@
+/* Mengatasi masalah navbar tidak mencapai ujung kanan layar */
+.navbar {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Menjaga kontainer tetap terpusat di layar */
+.halaman {
+  display: flex;
+  justify-content: center; /* memastikan kontainer terpusat */
+  align-items: center; /* menambah kesan vertikal tengah */
+  min-height: 100vh;
+}
+
+.container {
+  position: relative;
+  padding: 20px;
+  border: 1px solid;
+  margin-top: 15%;
+  width: 50%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Mengatur label supaya tetap terlihat jelas */
+label {
+  color: aliceblue;
+}
+
+/* Pengaturan background video */
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

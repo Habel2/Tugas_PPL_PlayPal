@@ -1,0 +1,54 @@
+.hide-content-wrapper {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.toggle-checkbox {
+    display: none;
+}
+
+.hide-content {
+    max-height: 6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+.toggle-checkbox:checked ~ .hide-content {
+    max-height: none;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+}
+
+.toggle-label {
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5em;
+    text-decoration: none;
+}
+
+.toggle-label:hover {
+    color: #555;
+}
+
+.toggle-label .arrow {
+    font-size: 1.2em;
+    margin-right: 0.3em;
+    transition: transform 0.2s;
+}
+
+.toggle-checkbox:checked ~ .toggle-label .arrow {
+    transform: rotate(180deg);
+}
+
+.toggle-checkbox:checked ~ .toggle-label .text {
+    content: "Read Less";
+}

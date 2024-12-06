@@ -1,0 +1,29 @@
+.comment-item {
+    border-radius: 15px;
+    position: relative;
+}
+
+.comment-item.selected {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #ff44548b;
+}
+
+.trash-icon button {
+    position: absolute;
+    top: 50%; /* Posisikan ikon di tengah secara vertikal */
+    right: 10px;
+    transform: translateY(-50%);
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 18px;
+    color: red;
+    cursor: pointer;
+}
+
+
+.comment-item.selected .trash-icon {
+    display: inline-block;
+}
+

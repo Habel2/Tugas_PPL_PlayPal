@@ -3,18 +3,17 @@ session_start();
 $message = null;
 $type = null;
 
-// Periksa apakah ada pesan di session
 if (isset($_SESSION['error'])) {
     $message = $_SESSION['error'];
-    $type = 'danger'; // Pesan error (merah)
+    $type = 'danger';
     unset($_SESSION['error']);
 } elseif (isset($_SESSION['success'])) {
     $message = $_SESSION['success'];
-    $type = 'success'; // Pesan sukses (hijau)
+    $type = 'success';
     unset($_SESSION['success']);
 }
 
-// Sertakan feedback.php
+
 include "feedback.php";
 ?>
 
@@ -44,7 +43,7 @@ include "feedback.php";
       <!-- Navigasi -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
         <a class="navbar-brand" href="#">
-            <img src="./bg/PlayPal_Logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="./icon/PlayPal_Logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
             PlayPal
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

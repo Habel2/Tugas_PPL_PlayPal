@@ -25,7 +25,7 @@ $user_id = $_SESSION['user_id'];
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
-            <img src="./bg/PlayPal_Logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="./icon/PlayPal_Logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
             PlayPal
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

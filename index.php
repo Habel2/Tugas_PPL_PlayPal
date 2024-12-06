@@ -39,6 +39,48 @@ $user_id = $_SESSION['user_id'];
                 <li class="nav-item">
                     <a class="nav-link" href="personal_background.php">Background</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <?php
+                    $selected_game_id = isset($_GET['game_id']) ? $_GET['game_id'] : null;
+                    $selected_game_name = 'Game';
+                    if ($selected_game_id) {
+                        $query = "SELECT game_name FROM games WHERE game_id = ?";
+                        $stmt = $koneksi->prepare($query);
+                        $stmt->bind_param("i", $selected_game_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        if ($result && $result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            $selected_game_name = htmlspecialchars($row['game_name']);
+                        }
+                    } else {
+                        $selected_game_name = 'Game';
+                    }
+                    ?>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        <?php echo $selected_game_name; ?>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="index.php">Game</a>
+
+                        <?php
+                        $query = "SELECT game_id, game_name FROM games";
+                        $result = $koneksi->query($query);
+                        if ($result && $result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $game_id = htmlspecialchars($row['game_id']);
+                                $game_name = htmlspecialchars($row['game_name']);
+                                echo "<a class='dropdown-item' href='index.php?game_id={$game_id}'>{$game_name}</a>";
+                            }
+                        } else {
+                            echo "<a class='dropdown-item' href='#'>No games available</a>";
+                        }
+                        ?>
+                    </div>
+                </li>
+
+
+
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -50,17 +92,22 @@ $user_id = $_SESSION['user_id'];
     <div class="container">
         <h1 class="my-4" style="color:aliceblue">Recent Posts</h1>
         <div class="row">
-            <?php
+        <?php
+            $game_id_filter = isset($_GET['game_id']) ? (int)$_GET['game_id'] : null;
+
             $query = "
                 SELECT posts.*, users.username, games.game_name
                 FROM posts
                 JOIN users ON posts.user_id = users.user_id
                 JOIN games ON posts.game_id = games.game_id
-                ORDER BY posts.created_at DESC
             ";
+            if ($game_id_filter) {
+                $query .= " WHERE posts.game_id = {$game_id_filter}";
+            }
+            $query .= " ORDER BY posts.created_at DESC";
+
             $result = $koneksi->query($query);
 
-            // Tampilkan data dari setiap post
             if ($result && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $post_id = htmlspecialchars($row['post_id']);
@@ -88,10 +135,10 @@ $user_id = $_SESSION['user_id'];
                                         <a class="dropdown-item" href="#">Report</a>
                                     </div>
                                 </div>
-
+    
                                 <h5 class="card-title"><?= $title ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted">by <?= $username ?> in <?= $game_name ?></h6>
-
+    
                                 <div class="hide-content-wrapper">
                                     <input type="checkbox" id="toggle-<?= $post_id ?>" class="toggle-checkbox">
                                     <div class="hide-content">
@@ -101,7 +148,7 @@ $user_id = $_SESSION['user_id'];
                                         <span class="arrow">▼</span> <span class="text">Read More</span>
                                     </label>
                                 </div>
-
+    
                                 <p class="text-muted">Posted on <?= $created_at ?></p>
                                 <div class="d-flex justify-content-between">
                                     <div class="likedislikebtn">
@@ -111,21 +158,25 @@ $user_id = $_SESSION['user_id'];
                                         <button class="btn btn-sm btn-outline-danger dislike-btn" data-post-id="<?= $post_id ?>">
                                             👎 <span class="dislike-count"><?= $dislikes ?></span>
                                         </button>
-
                                     </div>
                                     <button class="btn btn-sm btn-outline-info" onclick="window.location.href='postingan.php?post_id=<?= $post_id ?>'">
                                         💬 <span class="comment-count"><?= $comment_count ?></span>
                                     </button>
                                 </div>
-
+    
                             </div>
                         </div>
                     </div>
             <?php
                 }
             } else {
-                echo "<p>No posts available.</p>";
+                echo "
+                <div style='display: flex; justify-content: center; align-items: center; height: 70vh; width: 100%;'>
+                    <p style='font-size: 2rem; color: white;'>Belum ada yang ngeposting 😔.</p>
+                </div>
+                ";
             }
+                      
             ?>
         </div>
     </div>

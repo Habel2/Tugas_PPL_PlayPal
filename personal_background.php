@@ -89,7 +89,7 @@ $active_background = file_exists($active_background_file) ? file_get_contents($a
         </div>
     </nav>
 <div class="container mt-5">
-    <h2 class="text-center">Manage Your Background</h2>
+    <h2 class="text-center" style="color: white;">Manage Your Background</h2>
 
     <!-- Form Upload -->
     <form id="upload-form" enctype="multipart/form-data">
@@ -102,7 +102,7 @@ $active_background = file_exists($active_background_file) ? file_get_contents($a
     </form>
 
     <!-- Default Backgrounds -->
-    <h4 class="mt-5">Default Backgrounds</h4>
+    <h4 class="mt-5" style="color: white;">Default Backgrounds</h4>
     <div class="background-container">
         <?php foreach ($default_bg_files as $file): ?>
             <div class="background-item <?= $file === $active_background ? 'active-background' : '' ?>" onclick="selectBackground('<?= $file ?>')">
@@ -118,7 +118,7 @@ $active_background = file_exists($active_background_file) ? file_get_contents($a
     </div>
 
     <!-- Uploaded Backgrounds -->
-    <h4 class="mt-5">Personal Backgrounds</h4>
+    <h4 class="mt-5" style="color: white;">Personal Backgrounds</h4>
     <div class="background-container">
         <?php foreach ($files as $file): ?>
             <div class="background-item <?= $file === $active_background ? 'active-background' : '' ?>" onclick="selectBackground('<?= $file ?>')">

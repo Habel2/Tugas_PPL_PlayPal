@@ -4,7 +4,7 @@ $user_id = $_SESSION['user_id'];
 
 $user_folder = "./uploads/backgrounds/user_$user_id/current_background/";
 $active_background_file = $user_folder . "active_background.txt"; 
-$default_background = "./bg/background.webm";
+$default_background = "./bg/background.jpg";
 
 $active_background = file_exists($active_background_file) ? file_get_contents($active_background_file) : $default_background;
 

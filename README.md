@@ -1,15 +1,13 @@
----
-
 *KELOMPOK PLAYPAL
 
- **Ketua Kelompok:**
-- **Jop Ginting** (211401079)
+ **Ketua Kelompok:
+- Jop Ginting (211401079)
 
-**Anggota Kelompok:**
-- **Habel Sitanggang** (211401073)  
-- **Samuel Siahaan** (211401126)  
-- **Irgi Ahmad Alfarizi** (211401129)  
-- **Muhammad Gilang** (211401144)  
+**Anggota Kelompok:
+- Habel Sitanggang (211401073)  
+- Samuel Siahaan (211401126)  
+- Irgi Ahmad Alfarizi (211401129)  
+- Muhammad Gilang (211401144)  
 
 ---
 
